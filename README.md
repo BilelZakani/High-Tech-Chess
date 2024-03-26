@@ -16,8 +16,9 @@ here's how the game would be played :
    - After the movement being done, it's the 2nd player's turn, doing the same thing as the 1st player.
 
 ## Visuel
-![Project Sketch](/DOC/screenshots/chessboard1.jpg?raw=true "Project Sketch")
-
+<p align="center">
+  <img width=60% src="DOC/screenshots/chessboard1.jpg" />
+</p>
 
 ## More technically
 
@@ -28,8 +29,9 @@ For chess pieces, we have pieces with a magnetic disk at the base, easily found 
 
 So we're going to use a mechanical system that moves along the carthesian plane. We're thinking in terms of a system using stepper motors, pulleys and timing belts, in the same way as CNC systems.
 
-![board Sketch](/DOC/screenshots/chessbord_mechanism.png.jpg?raw=true "board Sketch")
-
+<p align="center">
+  <img width=50% src="DOC/screenshots/chessbord_mechanism.png" />
+</p>
 
 As someone who really likes projects needing at the same time elctronics, IT and mechanics (i.e. Mecatronic), I'm very excited to see the final result !
 
