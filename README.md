@@ -17,7 +17,7 @@ here's how the game would be played :
 
 ## Visuel
 <p align="center">
-  <img width=60% src="DOC/screenshots/chessboard1.jpg" />
+  <img width=90% src="DOC/screenshots/chessboard1.jpg" />
 </p>
 
 ## More technically
