@@ -28,7 +28,7 @@ For chess pieces, we have pieces with a magnetic disk at the base, easily found 
 
 So we're going to use a mechanical system that moves along the carthesian plane. We're thinking in terms of a system using stepper motors, pulleys and timing belts, in the same way as CNC systems.
 
-![board Sketch](/DOC/screenshots/chessbord_mechanism.png.jpg?raw=true "board Sketch")
+![board Sketch](/DOC/screenshots/chessboard_mechanism.png?raw=true "Project Sketch")
 
 
 As someone who really likes projects needing at the same time elctronics, IT and mechanics (i.e. Mecatronic), I'm very excited to see the final result !
