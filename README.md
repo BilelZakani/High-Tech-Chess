@@ -17,7 +17,7 @@ here's how the game would be played :
 
 ## Visuel
 <p align="center">
-  <img width=60% src="DOC/screenshots/chessboard1.jpg" />
+  <img width=90% src="DOC/screenshots/chessboard1.jpg" />
 </p>
 
 ## More technically
@@ -30,7 +30,7 @@ For chess pieces, we have pieces with a magnetic disk at the base, easily found 
 So we're going to use a mechanical system that moves along the carthesian plane. We're thinking in terms of a system using stepper motors, pulleys and timing belts, in the same way as CNC systems.
 
 <p align="center">
-  <img width=50% src="DOC/screenshots/chessbord_mechanism.png" />
+  <img width=50% src="DOC/screenshots/chessboard_mechanism.png" />
 </p>
 
 As someone who really likes projects needing at the same time elctronics, IT and mechanics (i.e. Mecatronic), I'm very excited to see the final result !
