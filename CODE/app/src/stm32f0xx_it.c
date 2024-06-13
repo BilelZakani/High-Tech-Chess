@@ -154,5 +154,27 @@ void EXTI0_1_IRQHandler()
 }
 
 
+/**
+  * This function handles EXTI lines 8 interrupt request.
+  */
 
+/*
+extern uint8_t SENSOR_STATE;
+
+
+void EXTI4_15_IRQHandler()
+{
+	// Test for line 8 pending interrupt
+	if ( ((EXTI->PR & EXTI_PR_PR8_Msk) != 0) && (SENSOR_STATE == 0) )
+	{
+		// Clear pending bit 8 by writing a '1'
+                // Do not use OR masking here
+		EXTI->PR = EXTI_PR_PR8;
+
+		SENSOR_STATE = 1;
+	}
+
+}
+
+*/
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

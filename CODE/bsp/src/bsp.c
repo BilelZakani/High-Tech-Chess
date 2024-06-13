@@ -142,11 +142,11 @@ void BSP_PB_Init() {
 	EXTI->IMR |= EXTI_IMR_IM1;
 
 	// Disable Rising / Enable Falling trigger
-	EXTI->RTSR &= ~EXTI_RTSR_RT0;
-	EXTI->FTSR |= EXTI_FTSR_FT0;
+	EXTI->RTSR |= EXTI_RTSR_RT0;
+	EXTI->FTSR &= ~EXTI_FTSR_FT0;
 
-	EXTI->RTSR &= ~EXTI_RTSR_RT1;
-	EXTI->FTSR |= EXTI_FTSR_FT1;
+	EXTI->RTSR |= EXTI_RTSR_RT1;
+	EXTI->FTSR &= ~EXTI_FTSR_FT1;
 
 
 }
@@ -183,7 +183,6 @@ uint8_t	BSP_PB_GetState()
  * RX -> PA3 (AF1)
  */
 
-extern uint8_t rx_dma_buffer[8];
 
 void BSP_Console_Init() {
 	// Enable GPIOA clock
@@ -433,8 +432,9 @@ void BSP_NVIC_Init()
 	// Enable EXTI line 0 to 1 for PB_LEFT and PB_BOTTOM interrupts
 	NVIC_EnableIRQ(EXTI0_1_IRQn);
 
-
 	// Enable sampling timer interrupts
 	NVIC_SetPriority(TIM6_DAC_IRQn, 0);
 	NVIC_EnableIRQ(TIM6_DAC_IRQn);
+
+
 }

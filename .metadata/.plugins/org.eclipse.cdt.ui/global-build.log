@@ -1,21 +1,91 @@
-18:07:23 **** Incremental Build of configuration Debug for project CODE ****
+16:16:14 **** Incremental Build of configuration Debug for project CODE ****
 make all 
-arm-none-eabi-gcc "../app/src/motor.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DSTM32F072xB -c -I"P:/ProjetS6/CODE/app/inc" -I"P:/ProjetS6/CODE/bsp/inc" -I"P:/ProjetS6/CODE/cmsis/core" -I"P:/ProjetS6/CODE/cmsis/device/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/src/motor.d" -MT"app/src/motor.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "app/src/motor.o"
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8876	     24	   1568	  10468	   28e4	CODE.elf
+Finished building: default.size.stdout
+ 
+16:20:39 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8876	     24	   1568	  10468	   28e4	CODE.elf
+Finished building: default.size.stdout
+ 
+16:21:17 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-gcc "../app/src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DSTM32F072xB -c -I"P:/ProjetS6/CODE/app/inc" -I"P:/ProjetS6/CODE/bsp/inc" -I"P:/ProjetS6/CODE/cmsis/core" -I"P:/ProjetS6/CODE/cmsis/device/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/src/main.d" -MT"app/src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "app/src/main.o"
 arm-none-eabi-gcc -o "CODE.elf" @"objects.list"   -mcpu=cortex-m0 -T"P:\ProjetS6\CODE\STM32F072RBTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="CODE.map" -Wl,--gc-sections -nodefaultlibs -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: CODE.elf
  
 arm-none-eabi-size   CODE.elf 
    text	   data	    bss	    dec	    hex	filename
-   8364	     20	   1572	   9956	   26e4	CODE.elf
+   8484	     20	   1572	  10076	   275c	CODE.elf
 Finished building: default.size.stdout
  
 arm-none-eabi-objdump -h -S  CODE.elf  > "CODE.list"
 Finished building: CODE.list
  
-18:08:17 **** Incremental Build of configuration Debug for project CODE ****
+16:21:23 **** Incremental Build of configuration Debug for project CODE ****
 make all 
 arm-none-eabi-size   CODE.elf 
    text	   data	    bss	    dec	    hex	filename
-   8364	     20	   1572	   9956	   26e4	CODE.elf
+   8484	     20	   1572	  10076	   275c	CODE.elf
+Finished building: default.size.stdout
+ 
+16:28:59 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-gcc "../app/src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DSTM32F072xB -c -I"P:/ProjetS6/CODE/app/inc" -I"P:/ProjetS6/CODE/bsp/inc" -I"P:/ProjetS6/CODE/cmsis/core" -I"P:/ProjetS6/CODE/cmsis/device/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/src/main.d" -MT"app/src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "app/src/main.o"
+arm-none-eabi-gcc -o "CODE.elf" @"objects.list"   -mcpu=cortex-m0 -T"P:\ProjetS6\CODE\STM32F072RBTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="CODE.map" -Wl,--gc-sections -nodefaultlibs -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CODE.elf
+ 
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6744	     12	   1572	   8328	   2088	CODE.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S  CODE.elf  > "CODE.list"
+Finished building: CODE.list
+ 
+16:31:55 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-gcc "../app/src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DSTM32F072xB -c -I"P:/ProjetS6/CODE/app/inc" -I"P:/ProjetS6/CODE/bsp/inc" -I"P:/ProjetS6/CODE/cmsis/core" -I"P:/ProjetS6/CODE/cmsis/device/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/src/main.d" -MT"app/src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "app/src/main.o"
+arm-none-eabi-gcc -o "CODE.elf" @"objects.list"   -mcpu=cortex-m0 -T"P:\ProjetS6\CODE\STM32F072RBTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="CODE.map" -Wl,--gc-sections -nodefaultlibs -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CODE.elf
+ 
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6744	     12	   1572	   8328	   2088	CODE.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S  CODE.elf  > "CODE.list"
+Finished building: CODE.list
+ 
+16:31:58 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6744	     12	   1572	   8328	   2088	CODE.elf
+Finished building: default.size.stdout
+ 
+16:33:29 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-gcc "../app/src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DSTM32F072xB -c -I"P:/ProjetS6/CODE/app/inc" -I"P:/ProjetS6/CODE/bsp/inc" -I"P:/ProjetS6/CODE/cmsis/core" -I"P:/ProjetS6/CODE/cmsis/device/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/src/main.d" -MT"app/src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "app/src/main.o"
+arm-none-eabi-gcc -o "CODE.elf" @"objects.list"   -mcpu=cortex-m0 -T"P:\ProjetS6\CODE\STM32F072RBTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="CODE.map" -Wl,--gc-sections -nodefaultlibs -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CODE.elf
+ 
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7136	     20	   1572	   8728	   2218	CODE.elf
+Finished building: default.size.stdout
+ 
+arm-none-eabi-objdump -h -S  CODE.elf  > "CODE.list"
+Finished building: CODE.list
+ 
+16:33:32 **** Incremental Build of configuration Debug for project CODE ****
+make all 
+arm-none-eabi-size   CODE.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7136	     20	   1572	   8728	   2218	CODE.elf
 Finished building: default.size.stdout
  

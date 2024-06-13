@@ -9,7 +9,7 @@
 #include "bsp.h"
 #include "main.h"
 
-uint16_t 	STEP_DELAY = 2000;
+uint16_t 	STEP_DELAY = 1200;
 uint8_t		STEPS_PER_REVOLUTION = 200;
 uint16_t 	CLEAR_STEPS_NUMBER = 5000;
 extern uint8_t PB_BOTTOM;		//line 0

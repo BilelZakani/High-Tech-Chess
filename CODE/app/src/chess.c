@@ -157,6 +157,95 @@ void Chess_Init(int board[CHESS_SIZE][CHESS_SIZE]){
 
 
 
+
+/*
+ * void SENSORS_Init()
+ * Initialize the hall effect sensors pins
+ *
+ * 1st bit of adress		(PC6)
+ * 2nd bit of adress		(PC7)
+ * 3rd bit of adress		(PC8)
+ *
+ * Enable					(PC9)
+ *
+ * Input					(PB8)
+ *
+ */
+
+void SENSORS_Init() {
+
+	// Enable GPIOB and GPIOC clock
+	RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
+	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
+
+	// Configure PC7, PC6, PC8 and PC9 as output
+	GPIOC->MODER &= ~( GPIO_MODER_MODER6_Msk | GPIO_MODER_MODER7_Msk | GPIO_MODER_MODER8_Msk | GPIO_MODER_MODER9_Msk);
+	GPIOC->MODER |= (0x01 << GPIO_MODER_MODER6_Pos) | (0x01 << GPIO_MODER_MODER7_Pos) | (0x01 << GPIO_MODER_MODER8_Pos) | (0x01 << GPIO_MODER_MODER9_Pos);
+
+	// Configure PB8 as input
+	GPIOB->MODER &= ~GPIO_MODER_MODER8_Msk;
+	GPIOB->MODER |= (0x00 << GPIO_MODER_MODER8_Pos);
+
+	// Configure PC7, PC6, PC5 and PC9 as Push-Pull output
+	GPIOC->OTYPER &= ~( GPIO_OTYPER_OT_6 | GPIO_OTYPER_OT_7 | GPIO_OTYPER_OT_8 | GPIO_OTYPER_OT_9);
+
+	// Configure PC7, PC6, PC8 and PC9 as High-Speed Output
+	GPIOC->OSPEEDR &= ~( GPIO_OSPEEDR_OSPEEDR6_Msk | GPIO_OSPEEDR_OSPEEDR7_Msk | GPIO_OSPEEDR_OSPEEDR8_Msk | GPIO_OSPEEDR_OSPEEDR9_Msk );
+	GPIOC->OSPEEDR |=  (0x03 << GPIO_OSPEEDR_OSPEEDR6_Pos) | (0x03 << GPIO_OSPEEDR_OSPEEDR7_Pos) | (0x03 << GPIO_OSPEEDR_OSPEEDR8_Pos) | (0x03 << GPIO_OSPEEDR_OSPEEDR9_Pos);
+
+
+	// Disable PC7, PC6, PC8, PC9 and PB8 Pull-down
+	GPIOC->PUPDR &= ~(GPIO_PUPDR_PUPDR6_Msk | GPIO_PUPDR_PUPDR7_Msk | GPIO_PUPDR_PUPDR8_Msk | GPIO_PUPDR_PUPDR9_Msk);
+	GPIOB->PUPDR &= ~GPIO_PUPDR_PUPDR8_Msk;
+
+	// Set Enable pin
+	GPIOC->BSRR |= GPIO_BSRR_BS_9;
+
+}
+
+
+
+/*
+ * SENSOR_GetState()
+ * Returns the state of the sensor (0= no detection, 1=detected)
+ */
+
+
+
+
+
+uint8_t SENSOR_GetState(uint8_t sensor_adress)
+{
+
+	uint8_t state;
+
+	// Set adresses bits
+
+
+	GPIOC->BSRR &= ~(GPIO_BSRR_BR_6 | GPIO_BSRR_BR_7 | GPIO_BSRR_BR_8 | GPIO_BSRR_BS_6 | GPIO_BSRR_BS_7 | GPIO_BSRR_BS_8) ;
+	GPIOC->BSRR |= ( ((~sensor_adress & 0x00000007) << 22) | (sensor_adress << 6) );
+
+
+
+	/*
+	GPIOC->ODR &= ~(0x1c0);
+	GPIOC->ODR |= (sensor_adress << 6) ;
+	*/
+
+	if ((GPIOB->IDR & GPIO_IDR_8) == GPIO_IDR_8)
+	{
+		state = 0;
+	}
+	else
+	{
+		state = 1;
+	}
+
+	return state;
+}
+
+
+
 void Print_Board(int board[CHESS_SIZE][CHESS_SIZE]){
 
 
@@ -318,4 +407,8 @@ void FIND_PATH_AND_MOVE(int board[CHESS_SIZE][CHESS_SIZE], uint8_t SQUARE1_X, ui
 
 
 }
+
+
+
+
 

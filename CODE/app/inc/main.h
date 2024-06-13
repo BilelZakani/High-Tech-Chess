@@ -14,7 +14,7 @@
 
 int my_printf(const char *format, ...);
 int my_sprintf(char *out, const char *format, ...);
-void DEMO(void);
+void DEMO1(void);
 void DEMO2(void);
 void DEMO3(void);
 

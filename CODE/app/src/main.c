@@ -22,8 +22,11 @@ uint8_t system_delay;
 uint8_t c;
 uint8_t PB_BOTTOM = 0; 			//Push Button on the bottom of the board
 uint8_t PB_LEFT = 0; 			//Push Button on the left of the board
+uint8_t SENSOR_STATE;
 
 
+
+uint8_t ad_lut[6] = {0,1,4,6,7,5};
 
 
 // Main program
@@ -33,6 +36,9 @@ int main() {
 	/*
 	 * Initializations
 	 */
+
+
+
 
 	// Configure System Clock (48MHz)
 	SystemClock_Config();
@@ -44,8 +50,6 @@ int main() {
 	BSP_Console_Init();
 	my_printf("Console Ready!\r\n");
 	my_printf("SYSCLK = %d\r\n", SystemCoreClock);
-
-
 
 	// Initialize LED and the 4 Push-Buttons
 	BSP_LED_Init();
@@ -61,6 +65,9 @@ int main() {
 	// Configure sampling timer with 10ms period (100Hz)
 	BSP_TIMER_Timebase_Init(10);
 
+	// Initialize sensors
+	SENSORS_Init();
+
 	// Initialize NVIC
 	BSP_NVIC_Init();
 
@@ -71,12 +78,11 @@ int main() {
 	// Wait  here for user button
 	while(BSP_PB_GetState() == 0);
 
+
 	//TIM1->CCR1 = 23;
 
 	//Initialize Motors Position
-	MOTOR_CLEAR_POSITION();
-
-	//MOTOR_LEFT_ENABLE(1500, 1);
+	//MOTOR_CLEAR_POSITION();
 
 	int board[CHESS_SIZE][CHESS_SIZE];
 
@@ -84,17 +90,13 @@ int main() {
 
 	Print_Board(board);
 
-
+	/*
 	my_printf("\n\n\n-------------DEMONSTRATION STARTED-------------\r\n\n\n");
 
-
-	DEMO3();
-	//MOVE_STRAIGHT("UP", 5);
-	//MOVE_STRAIGHT("DOWN", 5);
-
+	DEMO1();
 
 	my_printf("\n\n\n-------------DEMONSTRATION FINISHED !-------------\r\n\n\n");
-
+	*/
 
 	/*
 	my_printf("\n\n\n-------------DEMONSTRATION STARTED-------------\r\n\n\n");
@@ -117,7 +119,9 @@ int main() {
 
 
 	my_printf("\n\n\n-------------DEMONSTRATION FINISHED !-------------\r\n\n\n");
+
 	*/
+
 
 
 	/*
@@ -126,92 +130,29 @@ int main() {
 
 
 
+	uint8_t i;
+	uint8_t	sensors_buffer[6];
+	my_printf("\e[2J");
+	my_printf("\e[10;1H");
 
 	while(1)
 	{
 
 
-		while(!timebase_irq);
-		timebase_irq = 0;
-
-
-		//my_printf(".\r\n");
-
-
-
-
-		/*
-
-		switch (state)
+		// Do every 10ms
+		if(timebase_irq == 1)
 		{
-			case 0:        // State #0 (System moving, no Push button pressed)
-
-				if (PB_TOP == 1)    // If PB_TOP pressed -> Next state
-				{
-					PB_TOP = 0;
-					// Prepare state #1
-					state = 1;
-					my_printf("Top Button pressed !\r\n");
-					my_printf("Entering -> State 1\r\n");
-
-				}
 
 
-				break;
+			for(i=0; i< 6; i++){
 
-			case 1:        // State #1 (PB_TOP pressed)
-
-				if (PB_BOTTOM == 1)    // If PB_BOTTOM pressed -> Next state
-				{
-					PB_BOTTOM = 0;
-					// Prepare state #2
-					state = 2;
-					my_printf("Bottom Button pressed !\r\n");
-					my_printf("Entering -> State 2\r\n");
-				}
-
-				break;
-
-			case 2:        // State #2 (PB_BOTTOM pressed)
-
-				if (PB_LEFT == 1)    // If PB_LEFT pressed -> Next state
-				{
-					PB_LEFT = 0;
-					// Prepare state #3
-					state = 3;
-					my_printf("Left Button pressed !\r\n");
-					my_printf("Entering -> State 3\r\n");
-				}
-
-				break;
-
-			case 3:        // State #3 (PB_LEFT pressed)
-
-			if (PB_RIGHT == 1)    // If PB_RIGHT pressed -> Next state
-			{
-				PB_RIGHT = 0;
-				// Prepare state #0
-				state = 0;
-				my_printf("Right Button pressed !\r\n");
-				my_printf("Entering -> State 0\r\n");
+				sensors_buffer[i] = SENSOR_GetState(ad_lut[i]);
 			}
 
-			break;
-
-
+			my_printf("Sensor 1 : %d  |  Sensor 2 : %d  |  Sensor 3 : %d  |  Sensor 4 : %d  |  Sensor 5 : %d  |  Sensor 6 : %d\n\r", sensors_buffer[1], sensors_buffer[2], sensors_buffer[3], sensors_buffer[4], sensors_buffer[5], sensors_buffer[0]);
 		}
-
-
-
-
-		while ( (USART2->ISR & USART_ISR_TC) != USART_ISR_TC);
-		USART2->TDR = c;
-		*/
-
-
-
-
 	}
+
 }
 
 /*
@@ -305,7 +246,7 @@ static void SystemClock_Config() {
 }
 
 
-void DEMO(void){
+void DEMO1(void){
 
 	MOVE_STRAIGHT("UP", 5);
 	MOVE_STRAIGHT("RIGHT", 1);
